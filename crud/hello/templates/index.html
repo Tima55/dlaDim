@@ -1,0 +1,100 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>METANIT.COM</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {% load static %}
+    <!-- Подключение CSS файла -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/hello.css' %}">
+</head>
+<body>
+    {% if people.count > -1 %}
+    <!-- Блок для картинки -->
+    <button id="showLoginForm">Вход</button>
+    <div class="image-container">
+        <img src="{% static 'images/blak.png' %}" alt="Чёрная картинка" />
+        <img src="{% static 'images/wite.png' %}" alt="Белая картинка" />
+    </div>
+    <div id="loginForm" style="display: none;">
+        <input type="text" id="loginUsername" placeholder="Имя пользователя">
+        <input type="password" id="loginPassword" placeholder="Пароль">
+        <button id="submitLogin">Войти</button>
+    </div>   
+    <!-- Таблица для ввода данных нового пользователя -->
+    <table class="table users-list hidden">
+        <thead>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Возраст</th>
+            <th>Занятость</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <!-- Форма для добавления нового пользователя -->
+            <form method="POST" action="create/">
+                {% csrf_token %}
+                <tr>
+                    <td><input type="text" id="name" name="name" placeholder="Введите имя" class="type-2" maxlength="20" required ></td>
+                    <td><input type="text" id="surname" name="surname" placeholder="Введите фамилию" class="type-2" maxlength="20" required></td>
+                    <td><input type="text" id="age" name="age" placeholder="Введите возраст" class="type-2" maxlength="2" min="18" max="65" required></td>
+                    <td>
+                        <div class="checkbox-container">
+                            <span>Безработный</span>
+                            <input type="checkbox" name="a5" id="a5">
+                        </div>                
+                        <select id="job" name="job" class="select-button" required>
+                            <option value="Трудоустроенный">Трудоустроенный</option>
+                            <option value="Безработный">Безработный</option>
+                        </select>
+                    </td>
+                    <td><input type="submit" value="Сохранить" class="save-tab" ></td> 
+                </tr>
+            </form>
+        </tbody>
+    </table>
+    <!-- Кнопка для показа/скрытия списка пользователей -->
+    <button class="open" id="toggleUsersList">Добавить пользователей/Скрыть</button>
+    <h2>Список пользователей</h2>
+    <!-- Таблица для отображения сохраненных пользователей -->
+    <table class="table">
+        <thead>
+            <th>Id</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Возраст</th>
+            <th>Занятость</th>
+            <th>Действия</th>
+        </thead>
+        <tbody>
+            {% for person in people %}
+            <tr>
+                <td>{{ person.id }}</td>
+                <td id="name-{{ person.id }}">
+                    <span class="text">{{ person.name }}</span>
+                    <input type="text" id="edit-name-{{ person.id }}" class="edit-field" value="{{ person.name }}" style="display: none;">
+                </td>
+                <td id="surname-{{ person.id }}">
+                    <span class="text">{{ person.surname }}</span>
+                    <input type="text" id="edit-surname-{{ person.id }}" class="edit-field" value="{{ person.surname }}" style="display: none;">
+                </td>
+                <td id="age-{{ person.id }}">
+                    <span class="text">{{ person.age }}</span>
+                    <input type="text" id="edit-age-{{ person.id }}" class="edit-field" value="{{ person.age }}" style="display: none;">
+                </td>
+                <td id="job-{{ person.id }}">
+                    <span class="text">{{ person.job }}</span>
+                    <input type="text" id="edit-job-{{ person.id }}" class="edit-field" value="{{ person.job }}" style="display: none;">
+                </td>
+                <td>
+                    <a href="javascript:void(0);" class="edit" data-id="{{ person.id }}">Редактировать</a>
+                    <a href="javascript:void(0);" class="save" data-id="{{ person.id }}" style="display: none;">Сохранить</a> |
+                    <a href="delete/{{person.id}}" class="delete">Удалить</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    <script src="{% static 'js/re.js' %}"></script>
+</body>
+</html>

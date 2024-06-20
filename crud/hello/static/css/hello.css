@@ -1,0 +1,160 @@
+/* Стили для таблицы */
+.table {
+    border: 1px solid #eee; /* Граница таблицы */
+    table-layout: fixed; /* Фиксированная ширина ячеек */
+    width: 100%; /* Ширина таблицы */
+    margin-bottom: 20px; /* Отступ снизу */
+}
+
+/* Стили для заголовков таблицы */
+.table th {
+    font-weight: bold; /* Жирный шрифт */
+    padding: 5px; /* Отступы внутри ячейки */
+    background: #efefef; /* Фоновый цвет */
+    border: 1px solid #dddddd; /* Граница ячейки */
+}
+
+/* Стили для ячеек данных */
+.table td {
+    padding: 15px 10px; /* Отступы внутри ячейки */
+    border: 1px solid #eee; /* Граница ячейки */
+    text-align: left; /* Выравнивание текста по левому краю */
+}
+
+/* Стили для нечетных строк внутри tbody */
+.table tbody tr:nth-child(odd) {
+    background: #fff; /* Белый фон */
+}
+
+/* Стили для четных строк внутри tbody */
+.table tbody tr:nth-child(even) {
+    background: #F7F7F7; /* Светло-серый фон */
+}
+h2 {
+    text-align: center;
+}
+.hidden {
+    display: none;
+}
+/* Стили для кнопок */
+.save-tab,
+.edit,
+.save,
+.delete {
+    padding: 5px 5px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    margin-right: 5px;
+    font-size: 15px;
+    width: 103px;
+    height: 27px;
+}
+
+/* Стили для кнопки open */
+.open {
+    padding: 5px 10px; /* Увеличиваем padding по горизонтали для большего пространства вокруг текста */
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 15px;
+    width: auto; /* Изменяем ширину на auto, чтобы она адаптировалась к содержимому */
+    min-width: 120px; /* Устанавливаем минимальную ширину, чтобы кнопка не была слишком маленькой */
+    height: auto; /* Позволяет высоте кнопки адаптироваться к содержимому */
+    display: block; /* Делаем кнопку блочным элементом, чтобы можно было применить автоматические отступы */
+    margin: 20px auto; /* Центрируем кнопку и добавляем отступ сверху */
+    line-height: 1.5; /* Увеличиваем высоту строки, если текст занимает более одной строки */
+    float: center;
+}
+
+/* Стили при наведении на кнопку open */
+.open:hover {
+    background-color: #ddd; /* Легкий серый фон при наведении */
+}
+
+/* Стили при наведении на кнопки */
+.save-tab:hover,
+.edit:hover,
+.save:hover {
+    background-color: #ddd;
+}
+
+.edit:hover {
+    background-color: #8483d1;
+}
+.save:hover {
+    background-color: #81d894;
+}
+.save-tab:hover {
+    background-color: #81d894;
+}
+.delete:hover {
+    background-color: #d67b7b;
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+  }
+
+select {
+    color: #555;
+    border: 1px solid #ccc;
+    padding: 9px;
+    font-size: 13px;
+    transition: color 0.3s ease;
+}
+select:hover {
+    color: #493d41;
+}
+
+.image-container img {
+    max-width: 50px; /* Уменьшаем изображение до максимальной ширины 100px */
+    height: auto; /* Высота изменяется автоматически, сохраняя пропорции изображения */
+    float: left; /* Выравнивание изображения по левому краю */
+}
+body {
+    margin:40px;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  input {
+    display:block;
+    width:70%;
+    margin:10px 0;
+    padding:10px;
+  }
+  .checkbox-container {
+    display: flex;
+    align-items: center; /* Выравнивание по вертикали */
+}
+
+/* Дополнительные стили для флажка и текста */
+.checkbox-container input {
+    margin-right: 25%; /* Отступ между флажком и текстом */
+}
+.type-2 {
+  background-color: #fafafa;
+  border:0;
+  box-shadow:0 0 4px rgba(0,0,0,0.3);
+  transition: .3s box-shadow;
+}
+.type-2:hover {
+  box-shadow:0 0 4px rgba(0,0,0,0.5);
+}
+
+.login-input, .password-input {
+    display: block; /* Элементы занимают всю доступную ширину */
+    margin: 10px 0; /* Отступы сверху и снизу */
+    padding: 8px; /* Внутренние отступы для удобства ввода */
+}
+
+/* Стилизация кнопки после отключения */
+.login:disabled {
+    background-color: #ccc; /* Серый фон для отключенной кнопки */
+    cursor: not-allowed; /* Курсор в виде запрещающего знака */
+}
